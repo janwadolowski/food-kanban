@@ -1,0 +1,6 @@
+# IDE settings
+.vscode/
+.idea/
+
+# Cache
+__pycache__/

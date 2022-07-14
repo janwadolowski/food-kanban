@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "food-kanban"
+version = "0.1.0"
+description = "App for meal planning for families as well as individual users"
+authors = ["Jan Wadolowski <janwadolowski@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^4.0.6"
+python-dotenv = "^0.20.0"
+
+[tool.poetry.dev-dependencies]
+bandit = "^1.7.4"
+mypy = "^0.961"
+autoflake = "^1.4"
+black = "^22.6.0"
+pytest = "^7.1.2"
+pydocstyle = "^6.1.1"
+django-stubs = "^1.12.0"
+psycopg2 = "^2.9.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
