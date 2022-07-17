@@ -1,5 +1,4 @@
-"""
-ASGI config for food_kanban project.
+"""ASGI config for food_kanban project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 

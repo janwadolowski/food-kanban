@@ -1,5 +1,4 @@
-"""
-WSGI config for food_kanban project.
+"""WSGI config for food_kanban project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

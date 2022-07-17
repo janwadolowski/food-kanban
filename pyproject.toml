@@ -19,7 +19,54 @@ pytest = "^7.1.2"
 pydocstyle = "^6.1.1"
 django-stubs = "^1.12.0"
 psycopg2 = "^2.9.3"
+toml = "^0.10.2"
+pyproject-autoflake = "^1.0.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pydocstyle]
+match = ".*\\.py"
+ignore = ["D100", "D101", "D104", "D203", "D204", "D213", "D413"]
+
+[tool.isort]
+profile = "black"
+line_length = 88
+
+[tool.autopep8]
+max_line_length = 88
+in-place = true
+recursive = true
+aggressive = 3
+
+[tool.autoflake]
+check = false
+in-place = true
+recursive = true
+expand-star-imports = true
+remove-all-unused-imports = true
+ignore-init-module-imports = true
+remove-duplicate-keys = true
+remove-unused-variables = true
+verbose = 0
+
+[tool.mypy]
+python_version = "3.10"
+files = [
+    "food_kanban"
+]
+plugins = ["mypy_django_plugin.main"]
+warn_unused_configs = true
+show_error_codes = true
+warn_return_any = false
+warn_no_return = false
+disallow_untyped_defs = true
+ignore_missing_imports = true
+follow_imports = "normal"
+strict_optional = false
+no_implicit_optional = true
+check_untyped_defs = true
+
+[tool.django-stubs]
+django_settings_module = "food_kanban.settings.development"
