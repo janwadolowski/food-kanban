@@ -39,15 +39,20 @@ repos:
     -   id: pydocstyle
         name: pydocstyle
         additional_dependencies: ["toml"]
--   repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v0.961
-    hooks:
-    -   id: mypy
-        name: mypy
-        additional_dependencies: [django-stubs==1.12.0, django-stubs-ext==0.5.0, types-pytz==2022.1.1, types-pyyaml==6.0.10, "python-dotenv", "psycopg2"]
 -   repo: https://github.com/pycqa/isort
     rev: 5.10.1
     hooks:
       - id: isort
         name: isort
         additional_dependencies: ["toml"]
+- repo: local
+  hooks:
+    - id: mypy
+      name: mypy
+      entry: "./run-mypy.sh"
+      language: python
+      language_version: python3.10
+      additional_dependencies: ["mypy~=0.961"]
+      types: [python]
+      require_serial: true
+      verbose: true
