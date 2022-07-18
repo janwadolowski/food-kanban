@@ -45,6 +45,13 @@ repos:
       - id: isort
         name: isort
         additional_dependencies: ["toml"]
+- repo: https://github.com/psf/black
+  rev: 22.6.0
+  hooks:
+    - id: black
+      name: black
+      description: The Uncompromising Code Formatter
+      language_version: python3.10
 - repo: local
   hooks:
     - id: mypy
