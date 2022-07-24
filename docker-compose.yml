@@ -2,23 +2,38 @@ version: "3.9"
 
 services:
   food_kanban_db:
-    image: postgres
+    restart: always
+    image: postgres:latest
+    ports:
+      - "5432:5432"
     volumes:
-      - ./data/db:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      - pgdata:/postgresql/data/
+    env_file: .env
+
   food_kanban_backend:
+    restart: always
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/code
+      - web-django:app
+      - web-static:app/static
     ports:
       - "8000:8000"
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    env_file: .env
     depends_on:
       - food_kanban_db
+
+  food_kanban_cache:
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/redis/data
+    env_file: .env
+
+volumes:
+  web-django:
+  web-static:
+  pgdata:
+  redisdata:
